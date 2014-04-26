@@ -1,4 +1,6 @@
-﻿// Step 1: Create a Console app to host the server  (or web app if you want to IIS host)
+﻿// Step 0: Open Visual Studio as Administrator to work around permissions for server, or run the following command
+//   netsh http add urlacl url=http://localhost:999/  user=DOMAIN\USER 
+// Step 1: Create a Console app to host the server  (or web app if you want to IIS host)
 // Step 2: Pull in the Owin Server package - Microsoft.Owin.Host.*  (I picked HttpListener, use SystemWeb for IIS)
 // Step 3: Pull in the Owin support for Web Api  - Microsoft.AspNet.WebApi.Owin
 // Step 4: Pull in the Owin support for SignalR - Microsoft.AspNet.SignalR.Owin
@@ -40,6 +42,8 @@ namespace OwinMultiApp
 
             }))
             {
+                Console.WriteLine("WebApi listening at http://localhost:999/");
+                Console.WriteLine("SignalR listening at http://localhost:999/signalr");
                 Console.ReadKey();
             }
 
